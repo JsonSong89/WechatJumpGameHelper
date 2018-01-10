@@ -96,6 +96,19 @@ class TiaoYiTiao {
             });
         });
 
+        socket.on('updateSc',() => {
+            _ts.screencap('sc.png').then(v => {
+                //更新图片
+                socket.emit('updateImg',{
+                    imgSrc:'./static/screen/sc.png?v='+(+new Date)
+                });
+                _ts.log('success',v.msg);
+            }).catch(e => {
+                _ts.log('error',e.status);
+                _ts.log('error',e.msg);
+            });
+        });
+
         _ts.screencap('sc.png').then(v => {
             //更新图片
             socket.emit('updateImg',{

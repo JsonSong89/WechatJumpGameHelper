@@ -8,7 +8,8 @@ class Main{
         _ts.e = {};
 
         _ts.e.oWin = _ts.$('.win');
-        _ts.e.oSubmit = _ts.$('button');
+        _ts.e.oSubmit = document.getElementById("side__submit");
+        _ts.e.oUpdate = document.getElementById("updateImg");
 
         _ts.e.oSide__starX = _ts.$('#side__starX');
         _ts.e.oSide__starY = _ts.$('#side__starY');
@@ -202,6 +203,9 @@ class Main{
             }else{
                 alert('请在左侧画布中拖选距离');
             };
+        };
+        e.oUpdate.onclick = event => {
+            _ts.socket.emit('updateSc');
         };
     }
 
